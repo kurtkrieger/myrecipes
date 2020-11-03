@@ -3,13 +3,17 @@ $navbar-default-bg: #073b15;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.footer-copyright {
+  color: #fff;
+}
+
 .btn-xlarge {
   background-color: #073b15;
 }
 
 .btn-xlarge:hover {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
 }
 
 .jumbotron {
@@ -18,7 +22,15 @@ $navbar-default-bg: #073b15;
   height: 300px;
 }
 
-.jumbotron h1, h2 {
+.jumbotron h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.jumbotron h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 30px;
