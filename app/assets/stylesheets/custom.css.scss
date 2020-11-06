@@ -3,6 +3,18 @@ $navbar-default-bg: #073b15;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.well a {
+  color: #073b15;
+}
+
+.colormatch a {
+  color: #073b15;
+}
+
+.description {
+  margin-top: 0;
+}
+
 .footer-copyright {
   color: #fff;
 }
