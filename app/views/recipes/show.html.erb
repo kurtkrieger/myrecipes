@@ -25,5 +25,6 @@
       method: :delete, 
       data: { confirm: "Are you sure you want to delete the '#{@recipe.name}' recipe?"},
       class: "btn btn-xs btn-danger" %>
+    <%= link_to "Return to recipe listing", recipes_path, class: "btn btn-xs btn-primary" %>
   </div>
 </div>
