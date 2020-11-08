@@ -3,6 +3,13 @@ $navbar-default-bg: #073b15;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.recipe-actions {
+  padding-top: 5px;
+  a {
+    color: #fff;
+  }
+}
+
 .well a {
   color: #073b15;
 }

@@ -26,9 +26,11 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match @recipe1.name.downcase , response.body.downcase
     assert_match @recipe1.description, response.body
     assert_match @chef.chefname, response.body
+    assert_select "a[href=?]", edit_recipe_path(@recipe1), text: "Edit this recipe"
+    assert_select "a[href=?]", recipe_path(@recipe1), text: "Delete this recipe"
   end
   
-  test "valid new recipe" do
+  test "valid recipe create" do
     get new_recipe_path
     assert_template "recipes/new"
     
@@ -44,7 +46,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match r_desc.downcase, response.body.downcase
   end
   
-  test "reject invalid new recipe" do
+  test "reject recipe create" do
     get new_recipe_path
     assert_template "recipes/new"
     

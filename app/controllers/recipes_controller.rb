@@ -17,6 +17,12 @@ class RecipesController < ApplicationController
   end
   
   def update
+    if @recipe.update(recipe_params)
+      flash[:success] = "Recipe was updated successfully!"
+      redirect_to recipe_path(@recipe)
+    else
+      render "edit"
+    end
   end
   
   def create
@@ -31,6 +37,12 @@ class RecipesController < ApplicationController
   end
   
   def destroy
+    if @recipe.destroy
+      flash[:success] = "Recipe was deleted!"
+      redirect_to recipes_path
+    else
+      render "show"
+    end
   end
   
   
