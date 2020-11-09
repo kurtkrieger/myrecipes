@@ -1,8 +1,19 @@
 <%= render "shared/page_title", title: "Your Profile" %> 
 
+<div class="row">
+  <div class="col-md-offset-4 col-md-4 center">
+    <%= gravatar_for @chef, size: 150  %>
+  </div>
+</div>
+
+<h4 align="center"><%= @chef.chefname %>'s recipes</h4>
+
+<%= render "recipes/recipe", obj: @chef.recipes %>
+
+<!--
 <div class="well col-md-8 col-md-offset-2">
-  <!--<h4 class="center email"><strong>Steps: </strong></h4>-->
-  <!--<hr />-->
+  <h4 class="center email"><strong>Steps: </strong></h4>
+  <hr />
   <%= simple_format(@chef.email) %>
   <hr />
   <div class="pull-right">
@@ -28,3 +39,4 @@
     <%= link_to "Return to chef listing", chefs_path, class: "btn btn-xs btn-primary" %>
   </div>
 </div>
+-->
