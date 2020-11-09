@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get "/pages/home", to: "pages#home"
   
+  get "/signup", to: "chefs#new"
   resources :recipes
-  resources :chefs
+  resources :chefs, except: [:new]
   
   # # List all
   # get "/recipes", to: "recipes#index"

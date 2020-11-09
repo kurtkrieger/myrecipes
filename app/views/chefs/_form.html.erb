@@ -6,7 +6,7 @@
       
       <div class="form-group">
         <div class="control-label col-md-2">
-          <%= f.label :chefname %>
+          <%= f.label :chefname, "Name" %>
         </div>
         <div class="col-md-8">
           <%= f.text_field :chefname, class: "form-control", placeholder: "Name of chef", autofocus: true %>
@@ -33,7 +33,7 @@
       
       <div class="form-group">
         <div class="control-label col-md-2">
-          <%= f.label :password_confirmation %>
+          <%= f.label :password_confirmation, "Confirm Password" %>
         </div>
         <div class="col-md-8">
           <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
@@ -43,7 +43,7 @@
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           
-          <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
+          <%= f.submit "Create my account", class: "btn btn-primary btn-lg btn-xlarge" %>
         </div>
         
       </div>
@@ -52,7 +52,7 @@
     <% end %>
     
     <div class="col-md-offset-4 col-md-4 colormatch">
-      [ <%= link_to "Cancel request and return to chefs listing", chefs_path %> ]
+      [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
     </div>
   </div>
 </div>
