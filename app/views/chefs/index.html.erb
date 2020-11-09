@@ -1,0 +1,21 @@
+<%= render "shared/page_title", title: "Listing all chefs" %> 
+
+<hr />
+<% @chefs.order("lower(chefname)").each do |chef| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="center">
+        
+      </section>
+    </div>
+    <div class="col-md-8 well">
+      <h4><%= link_to chef.chefname, chef %></h4>
+      <p><%= truncate(chef.email, length: 150) %></p>
+      <p>
+        <span class="quiet"><small>Created 
+
+        <%= time_ago_in_words(chef.created_at) %> ago</small></span>
+      </p> 
+    </div>
+  </div>
+<% end %>
