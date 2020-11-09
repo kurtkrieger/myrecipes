@@ -18,7 +18,7 @@ class ChefsController < ApplicationController
   def update
     if @chef.update(chef_params)
       flash[:success] = "Chef was updated successfully!"
-      redirect_to chef_path(@chef)
+      redirect_to @chef
     else
       render "edit"
     end
@@ -28,7 +28,7 @@ class ChefsController < ApplicationController
     @chef = Chef.new(chef_params)
     if @chef.save
       flash[:success] = "Welcome #{@chef.chefname.capitalize} to MyRecipes App!"
-      redirect_to chef_path(@chef)
+      redirect_to @chef
     else
       render "new"
     end

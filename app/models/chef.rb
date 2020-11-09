@@ -1,15 +1,13 @@
 class Chef < ApplicationRecord
   before_save { self.email = email.downcase }
-  has_secure_password
   
-  validates :chefname, presence: true
-  validates_length_of :chefname, minimum: 2, maximum: 20
+  validates :chefname, presence: true, length: {minimum: 2, maximum: 20}
 
-  validates :email, presence: true, uniqueness: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
   
-  validates :password, presence: true
-  validates_length_of :password, minimum: 5, maximum: 20
-  
+  validates :password, presence: true, length: {minimum: 5, maximum: 20}, allow_nil: true
+
+  has_secure_password
+
   has_many :recipes
 end
