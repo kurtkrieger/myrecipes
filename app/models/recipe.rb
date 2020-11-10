@@ -1,8 +1,11 @@
 class Recipe < ApplicationRecord
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :chef_id, presence: true
-  validates_length_of :name, minimum: 2, maximum: 20
-  validates_length_of :description, minimum: 10, maximum: 200
+  validates :name,        presence: true, length: {minimum: 5, maximum: 100}
+  
+  validates :description, presence: true, length: {minimum: 10, maximum: 2000}
+  
+  validates :chef_id,     presence: true
+  
+  default_scope -> { order(updated_at: :desc) }
+  
   belongs_to :chef
 end

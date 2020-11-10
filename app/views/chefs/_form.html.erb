@@ -22,33 +22,34 @@
         </div>
       </div>
       
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :password %>
-        </div>
-        <div class="col-md-8">
-          <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-        </div>
-      </div>
+      <!--  Should hide these fields when updating -->
       
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :password_confirmation, "Confirm Password" %>
+        <div class="form-group">
+          <div class="control-label col-md-2">
+            <%= f.label :password %>
+          </div>
+          <div class="col-md-8">
+            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+          </div>
         </div>
-        <div class="col-md-8">
-          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+      
+        <div class="form-group">
+          <div class="control-label col-md-2">
+            <%= f.label :password_confirmation, "Confirm Password" %>
+          </div>
+          <div class="col-md-8">
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+          </div>
         </div>
-      </div>
+        
+      <!----------->
       
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          
           <%= f.submit(@chef.new_record? ? "Create my account" : "Update my account", class: "btn btn-primary btn-lg btn-xlarge") %>
         </div>
-        
       </div>
-      
-      
+        
     <% end %>
     
     <div class="col-md-offset-4 col-md-4 colormatch">

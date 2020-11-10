@@ -9,5 +9,7 @@ class Chef < ApplicationRecord
 
   has_secure_password
 
+  default_scope -> { order(lower(:chefname)) }
+  
   has_many :recipes
 end

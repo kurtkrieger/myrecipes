@@ -20,6 +20,7 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", recipe_path(@recipe2), text: @recipe2.name
     assert_match @recipe1.description.downcase, response.body.downcase
     assert_match @recipe2.description.downcase, response.body.downcase
+    assert_match @chef.chefname.downcase, response.body.downcase
   end
   
 end

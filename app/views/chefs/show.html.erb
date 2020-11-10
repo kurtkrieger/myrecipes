@@ -8,35 +8,12 @@
 
 <h4 align="center"><%= @chef.chefname %>'s recipes</h4>
 
-<%= render "recipes/recipe", obj: @chef.recipes %>
-
-<!--
-<div class="well col-md-8 col-md-offset-2">
-  <h4 class="center email"><strong>Steps: </strong></h4>
-  <hr />
-  <%= simple_format(@chef.email) %>
-  <hr />
-  <div class="pull-right">
-    <p class="center">
-      <em>Created by:</em>
-    </p>
-    <p class="center">
-      <%= link_to gravatar_for(@chef), chefs_path %>
-    </p>
-    <p class="center">
-      <small><%= @chef.chefname.capitalize %></small>
-      <div class="pull-right"><%= time_ago_in_words(@chef.created_at) %> ago</div>
-    </p>
-  </div>
-  
-  <div class="chef-actions">
-    <%= link_to "Edit this chef", edit_chef_path(@chef), class: "btn btn-xs btn-warning" %>
-    <%= link_to "Delete this chef", 
-      chef_path(@chef), 
-      method: :delete, 
-      data: { confirm: "Are you sure you want to delete the chef named '#{@chef.chefname}'?"},
-      class: "btn btn-xs btn-danger" %>
-    <%= link_to "Return to chef listing", chefs_path, class: "btn btn-xs btn-primary" %>
-  </div>
+<div align="center">
+  <%= will_paginate @chef_recipes %>
 </div>
--->
+
+<%= render "recipes/recipe", obj: @chef_recipes %>
+
+<div align="center">
+  <%= will_paginate @chef_recipes %>
+</div>

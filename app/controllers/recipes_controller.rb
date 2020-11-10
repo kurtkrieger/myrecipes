@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:edit, :show, :update, :destroy]
 
   def index
-    @recipes = Recipe.all.order(:name)
+    @recipes = Recipe.paginate(page: params[:page], per_page: 1)
   end
   
   def new
@@ -27,7 +27,9 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.first
+    
+    @recipe.chef = Chef.find_by(email: "kurt.krieger.work@outlook.com") if @recipe.chef.nil?
+    
     if @recipe.save
       flash[:success] = "Recipe was created successfully!"
       redirect_to recipe_path(@recipe)
@@ -48,7 +50,7 @@ class RecipesController < ApplicationController
   
   private
     def recipe_params
-      params.require(:recipe).permit(:name, :description)
+      params.require(:recipe).permit(:name, :description, :page)
     end
 
     def set_recipe

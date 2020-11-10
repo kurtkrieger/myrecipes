@@ -1,21 +1,21 @@
-<%= render "shared/page_title", title: "Listing all chefs" %> 
+<%= render "shared/page_title", title: "Showing all chefs" %> 
 
-<hr />
-<% @chefs.order("lower(chefname)").each do |chef| %>
-  <div class="row">
-    <div class="col-md-2">
-      <section class="center">
-        
-      </section>
-    </div>
-    <div class="col-md-8 well">
-      <h4><%= link_to chef.chefname, chef %></h4>
-      <p><%= truncate(chef.email, length: 150) %></p>
-      <p>
-        <span class="quiet"><small>Created 
-
-        <%= time_ago_in_words(chef.created_at) %> ago</small></span>
-      </p> 
-    </div>
-  </div>
-<% end %>
+<div align="center">
+  <%= will_paginate %>
+    <% @chefs.order("lower(chefname)").each do |chef| %>
+      <ul class="listing">
+        <div class="row">
+          <div class="well col-md-offset-4 col-md-4">
+            <li><%= link_to gravatar_for(chef), chef %></li>
+            <li class="chef-title"><%= link_to chef.chefname, chef %></li>
+            <li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes  %></small></li>
+            <p>
+              <span class="quiet"><small>Created 
+              <%= time_ago_in_words(chef.created_at) %> ago</small></span>
+            </p> 
+          </div>
+        </div>
+      </ul>
+    <% end %>
+  <%= will_paginate %>
+</div>
