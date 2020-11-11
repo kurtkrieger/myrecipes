@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:edit, :show, :update, :destroy]
 
   def index
-    @recipes = Recipe.paginate(page: params[:page], per_page: 1)
+    @recipes = Recipe.paginate(page: params[:page], per_page: 2)
   end
   
   def new
@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
   def destroy
     if @recipe.destroy
       flash[:success] = "Recipe was deleted!"
-      redirect_to recipes_path
+      redirect_to chefs_path
     else
       render "show"
     end

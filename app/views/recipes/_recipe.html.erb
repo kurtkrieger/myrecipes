@@ -8,7 +8,7 @@
     
     <div class="col-md-8 well">
       <h4><%= link_to recipe.name, recipe %></h4>
-      <p><%= truncate(recipe.description, length: 150) %></p>
+      <p><%= simple_format(truncate(recipe.description, length: 150)) %></p>
       <p>
         <span class="quiet"><small>Created 
 

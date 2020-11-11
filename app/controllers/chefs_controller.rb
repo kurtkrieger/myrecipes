@@ -36,14 +36,16 @@ class ChefsController < ApplicationController
   end
   
   def destroy
+    chefname = @chef.chefname
     if @chef.destroy
-      flash[:success] = "Chef was deleted!"
+      flash[:danger] = "Chef '#{chefname}' was deleted, along with all associated recipes!"
       redirect_to chefs_path
     else
       render "show"
     end
   end
   
+  ############################################################################################
   
   private
     def chef_params
