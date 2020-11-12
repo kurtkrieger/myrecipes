@@ -1,4 +1,8 @@
-<%= render "shared/page_title", title: "Your Profile" %> 
+<%= render "shared/page_title", title: "#{@chef.chefname}'s Profile" %>
+
+<% if @chef.admin? %>
+<h4 align="center" style="color: red; background: pink">Administrator</h4>
+<% end %>
 
 <div class="row">
   <div class="col-md-offset-4 col-md-4 center">
