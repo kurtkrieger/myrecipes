@@ -7,11 +7,6 @@ class ChefsSignupTest < ActionDispatch::IntegrationTest
                                 password: "password", password_confirmation: "password")
   end
   
-  test "should get signup path" do
-    get signup_path
-    assert_response :success
-  end
-  
   test "reject invalid signup" do
     get signup_path
     assert_template "chefs/new"
@@ -36,7 +31,7 @@ class ChefsSignupTest < ActionDispatch::IntegrationTest
     assert_template "chefs/show"
     assert_not flash.empty?
     assert_match @chef.chefname.downcase, response.body.downcase
-    assert_match @chef.email.downcase, response.body.downcase
+    # assert_match @chef.email.downcase, response.body.downcase
   end
   
 end

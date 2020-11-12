@@ -9,6 +9,8 @@ class RecipesDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "valid recipe delete" do
+    sign_in_as(@chef, "password")
+    
     get recipe_path(@recipe)
     assert_template "recipes/show"
     assert_difference "Recipe.count", -1 do

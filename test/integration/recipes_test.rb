@@ -21,7 +21,9 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", recipe_path(@recipe2), text: @recipe2.name
   end
   
-  test "should get recipe show" do
+  test "should get recipe show logged in" do
+    sign_in_as(@chef, "password")
+    
     get recipe_path(@recipe1)
     assert_template 'recipes/show'
     assert_match @recipe1.name.downcase , response.body.downcase
@@ -32,7 +34,20 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", recipes_path, text: "Return to recipe listing"
   end
   
+  test "should get recipe show logged out" do
+    get recipe_path(@recipe1)
+    assert_template 'recipes/show'
+    assert_match @recipe1.name.downcase , response.body.downcase
+    assert_match @recipe1.description, response.body
+    assert_match @chef.chefname, response.body
+    assert_select "a[href=?]", edit_recipe_path(@recipe1), text: "Edit this recipe", count: 0
+    assert_select "a[href=?]", recipe_path(@recipe1), text: "Delete this recipe", count: 0
+    assert_select "a[href=?]", recipes_path, text: "Return to recipe listing"
+  end
+  
   test "valid recipe create" do
+    sign_in_as(@chef, "password")
+    
     get new_recipe_path
     assert_template "recipes/new"
     
@@ -49,6 +64,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
   end
   
   test "reject recipe create" do
+    sign_in_as(@chef, "password")
+    
     get new_recipe_path
     assert_template "recipes/new"
     
