@@ -3,6 +3,27 @@ $navbar-default-bg: #073b15;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.copyright-container {
+    white-space: nowrap;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-justify {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .chef-title {
   color: #073b15;
   font-weight: bold;
