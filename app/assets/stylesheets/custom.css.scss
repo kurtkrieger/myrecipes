@@ -3,6 +3,10 @@ $navbar-default-bg: #073b15;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.input_checkbox input {
+  width: auto !important;
+}
+
 .copyright-container {
     white-space: nowrap;
     color: #fff;

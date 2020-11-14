@@ -18,6 +18,10 @@
     </p>
   </div>
   
+  <% if @recipe.ingredients.any? %>
+    <p>Ingredients: <%= render @recipe.ingredients %></p>
+  <% end %>
+
   <div class="recipe-actions">
     
     <% if logged_in? && (@recipe.chef == current_chef || current_chef.admin?) %>
