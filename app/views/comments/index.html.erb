@@ -1,0 +1,11 @@
+<%= render "shared/page_title", title: "Listing all Comments" %> 
+
+<div align="center">
+  <%= will_paginate %>
+</div>
+
+<%= render "comment", obj: @comments %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>

@@ -8,7 +8,7 @@
           <div class="well col-md-offset-4 col-md-4">
             <li><%= link_to gravatar_for(chef), chef %></li>
             <li class="chef-title"><%= link_to chef.chefname, chef %></li>
-            <li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes.count %></small></li>
+            <li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes.count > 0 %></small></li>
             <% if logged_in? && current_chef.admin? && !chef.admin? %>
               <li>
                 <%= link_to "Delete this chef", 

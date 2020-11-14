@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/signup", to: "chefs#new"
   resources :recipes
   resources :chefs, except: [:new]
+  resources :comments
+  resources :ingredients, except: [:destroy]
   
   get     "/login",   to: "sessions#new"
   post    "/login",   to: "sessions#create"
