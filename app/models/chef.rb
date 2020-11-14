@@ -12,4 +12,6 @@ class Chef < ApplicationRecord
   default_scope -> { order(lower(:chefname)) }
   
   has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
 end
