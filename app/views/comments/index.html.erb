@@ -2,10 +2,24 @@
 
 <div align="center">
   <%= will_paginate %>
-</div>
-
-<%= render "comment", obj: @comments %>
-
-<div align="center">
+    <% @comments.each do |comment| %>
+      <ul class="listing">
+        <div class="row">
+          <div class="well col-md-offset-4 col-md-4">
+            <li class="chef-title"><%= link_to comment.name, comment %></li>
+            <li><small><%= pluralize(comment.recipes.count, "recipe") if comment.recipes.count > 0 %></small></li>
+            <% if logged_in? && current_chef.admin? %>
+              <li>
+                <%= link_to "Edit this comment", edit_comment_path(comment) %>
+              </li>
+            <% end %>
+            <p>
+              <span class="quiet"><small>Created 
+              <%= time_ago_in_words(comment.created_at) %> ago</small></span>
+            </p> 
+          </div>
+        </div>
+      </ul>
+    <% end %>
   <%= will_paginate %>
 </div>

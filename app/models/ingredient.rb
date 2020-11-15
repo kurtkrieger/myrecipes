@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-  validates :name,        presence: true, length: {minimum: 2, maximum: 25}, uniqueness: true
+  validates :name, presence: true, length: {minimum: 2, maximum: 25}, uniqueness: true
   
   default_scope -> { order(name: :asc) }
   
