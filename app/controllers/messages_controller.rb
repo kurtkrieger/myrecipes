@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
     @message.chef = current_chef
     
     if @message.save
-    #   ActionCable.server.broadcast "messages", render(partial: "messages/message", object: @message)
+      ActionCable.server.broadcast "chatroom_channel", message: render_message(@message)#, 
+          # chef: @message.chef.chefname
+      # render(partial: "messages/message", object: @message)
       
       # flash[:success] = "Comment was successfully created!"
-      redirect_to chat_path
+      # redirect_to chat_path
     else
       # flash[:danger] = "Message was not created!"
       # redirect_to :back
@@ -23,6 +25,10 @@ class MessagesController < ApplicationController
   private
     def message_params
       params.require(:message).permit(:content)
+    end
+    
+    def render_message(message)
+      render(partial: "message", locals: { message: message })
     end
 
 end
