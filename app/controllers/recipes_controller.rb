@@ -8,6 +8,11 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.paginate(page: params[:page], per_page: 2)
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @recipes.to_csv }
+    end
   end
   
   def new
