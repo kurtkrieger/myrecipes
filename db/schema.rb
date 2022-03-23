@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201128033817) do
+ActiveRecord::Schema.define(version: 20211128033830) do
 
   create_table "chefs", force: :cascade do |t|
     t.string   "chefname"
@@ -29,10 +29,25 @@ ActiveRecord::Schema.define(version: 20201128033817) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "cronreport_distributions", force: :cascade do |t|
+    t.integer "cronreport_id"
+    t.integer "user_id"
+  end
+
+  create_table "cronreports", force: :cascade do |t|
+    t.integer "lookup_id"
+    t.text    "name"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lookups", force: :cascade do |t|
+    t.text "lookup_type"
+    t.text "short_name"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -53,6 +68,10 @@ ActiveRecord::Schema.define(version: 20201128033817) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "chef_id",     limit: 8
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "email"
   end
 
 end
